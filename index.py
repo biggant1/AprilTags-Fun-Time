@@ -1,6 +1,7 @@
 from pupil_apriltags import Detector
 import cv2
 import json
+from scipy.spatial.transform import Rotation
 
 LINE_LENGTH = 5
 CENTER_COLOR = (0, 255, 0)
@@ -49,9 +50,10 @@ while True:
         print("Nothing")
     else:
         for detect in detections:
-            print(f"tag_id: {detect.tag_id}, center: {detect.center}")
-            print(f"rotation matrix: {detect.pose_R}")
-            print(f"translation matrix: {detect.pose_t}")
+            # print(f"tag_id: {detect.tag_id}, center: {detect.center}")
+            rot_matrix = Rotation.from_matrix(detect.pose_R)
+            euler = rot_matrix.as_euler('zxy', degrees=True)
+            print(euler)
             img = plotPoint(img, detect.center, CENTER_COLOR)
             img = plotText(img, detect.center, CENTER_COLOR, detect.tag_id)
             for corner in detect.corners:
