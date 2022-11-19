@@ -58,8 +58,6 @@ while True:
             for corner in detect.corners:
                 img = plotPoint(img, corner, CORNER_COLOR)
 
-    smile = cv2.imread("smilers.png")
-    smile = cv2.resize(smile, dsize=(100, 100))
     cv2.imshow('Result', img)
     key = cv2.waitKey(100)
     if key == 13:
