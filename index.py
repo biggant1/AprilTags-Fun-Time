@@ -59,6 +59,5 @@ while True:
                 img = plotPoint(img, corner, CORNER_COLOR)
 
     cv2.imshow('Result', img)
-    key = cv2.waitKey(100)
-    if key == 13:
+    if cv2.waitKey(1) == 13:
         break

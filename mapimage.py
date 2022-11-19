@@ -37,6 +37,8 @@ while True:
             top_left = corners.min(axis=0)
             width = int(bottom_right[0] - top_left[0])
             height = int(bottom_right[1] - top_left[1])
+            print(bottom_right, top_left)
+            print(corners)
             
             smile = smile.resize((width, height))
             rot_matrix = Rotation.from_matrix(detect.pose_R)
