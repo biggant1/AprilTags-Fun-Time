@@ -50,7 +50,6 @@ while True:
         print("Nothing")
     else:
         for detect in detections:
-            # print(f"tag_id: {detect.tag_id}, center: {detect.center}")
             rot_matrix = Rotation.from_matrix(detect.pose_R)
             euler = rot_matrix.as_euler('zxy', degrees=True)
             print(euler)
@@ -58,6 +57,9 @@ while True:
             img = plotText(img, detect.center, CENTER_COLOR, detect.tag_id)
             for corner in detect.corners:
                 img = plotPoint(img, corner, CORNER_COLOR)
+
+    smile = cv2.imread("smilers.png")
+    smile = cv2.resize(smile, dsize=(100, 100))
     cv2.imshow('Result', img)
     key = cv2.waitKey(100)
     if key == 13:

@@ -1,2 +1,3 @@
 calibration_images/*.jpg
 marker_images
+__pycache__
