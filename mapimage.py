@@ -37,8 +37,6 @@ while True:
             top_left = corners.min(axis=0)
             width = int(bottom_right[0] - top_left[0])
             height = int(bottom_right[1] - top_left[1])
-            print(bottom_right, top_left)
-            print(corners)
             
             smile = smile.resize((width, height))
             rot_matrix = Rotation.from_matrix(detect.pose_R)
@@ -49,6 +47,5 @@ while True:
             img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
 
     cv2.imshow('Result', img)
-    key = cv2.waitKey(100)
-    if key == 13:
+    if cv2.waitKey(1) == 13:
         break
